@@ -1,0 +1,12 @@
+python-arango>=8.3,<9      # ArangoDB driver (add_index, AQL, views, graphs)
+openai>=2                   # any OpenAI-compatible endpoint (chat, structured outputs, embeddings)
+pydantic>=2.7               # structured outputs schemas (chapter 6)
+tiktoken>=0.8               # token counting (chapters 3 and 7)
+pypdf>=5                    # read the Einstein paper (chapters 2 and 3)
+requests>=2.31              # download public datasets
+networkx>=3.4               # Louvain / Leiden community detection (chapter 7)
+tqdm>=4.66                  # progress bars
+python-dotenv>=1.0          # load .env
+mcp>=2,<3                   # optional: expose the chapter-5 tools as an MCP server
+# Optional, chapter 8 alternative to the built-in judge:
+#   ragas==0.4.3  langchain-community<0.4  langchain-openai

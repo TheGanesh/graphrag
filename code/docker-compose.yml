@@ -1,0 +1,21 @@
+# ArangoDB for every example in this guide.
+#   docker compose up -d        -> web UI at http://localhost:8529  (root / openSesame)
+#
+# --vector-index enables vector indexes (APPROX_NEAR_COSINE & friends, v3.12.4+).
+# Once a deployment has been started with it, it cannot be switched off again.
+services:
+  arangodb:
+    image: arangodb:3.12.12
+    container_name: graphrag-arangodb
+    environment:
+      ARANGO_ROOT_PASSWORD: openSesame
+    command: ["--vector-index"]
+    ports:
+      - "8529:8529"
+    volumes:
+      - arangodb_data:/var/lib/arangodb3
+      - arangodb_apps:/var/lib/arangodb3-apps
+
+volumes:
+  arangodb_data:
+  arangodb_apps:

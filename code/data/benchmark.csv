@@ -1,0 +1,50 @@
+question;aql
+Hello;RETURN "a greeting and a reminder that it can only answer questions about movies"
+What can you do?;RETURN "it answers questions about movies and the people who made them"
+What is the weather like in Spain?;RETURN "an irrelevant question: it only answers questions about movies and their cast"
+How many movies are there?;RETURN { movies: COLLECTION_COUNT("movies") }
+Who acted in the most movies?;"FOR e IN acted_in
+  COLLECT actor = e._from WITH COUNT INTO movie_count
+  SORT movie_count DESC
+  LIMIT 1
+  RETURN { name: DOCUMENT(actor).name, movie_count }"
+Which movies were released between 1990 and 2000?;FOR m IN movies FILTER m.released >= 1990 AND m.released <= 2000 SORT m.title RETURN { title: m.title, released: m.released }
+Who has the longest name among all actors?;"FOR p IN persons
+  FILTER LENGTH(FOR m IN 1..1 OUTBOUND p acted_in LIMIT 1 RETURN 1) > 0
+  SORT CHAR_LENGTH(p.name) DESC
+  LIMIT 1
+  RETURN p.name"
+List people born before 1940.;FOR p IN persons FILTER p.born != null AND p.born < 1940 SORT p.name RETURN p.name
+Who was born in 1965 and has directed a movie?;"FOR p IN persons
+  FILTER p.born == 1965
+  FILTER LENGTH(FOR m IN 1..1 OUTBOUND p directed LIMIT 1 RETURN 1) > 0
+  RETURN p.name"
+Who acted in Top Gun?;"FOR m IN movies FILTER m.title == ""Top Gun""
+  FOR p IN 1..1 INBOUND m acted_in
+    RETURN p.name"
+Who acted in top gun?;"FOR m IN movies FILTER m.title == ""Top Gun""
+  FOR p IN 1..1 INBOUND m acted_in
+    RETURN p.name"
+In which movies did Tom Hanks act in?;"FOR p IN persons FILTER p.name == ""Tom Hanks""
+  FOR m IN 1..1 OUTBOUND p acted_in
+    RETURN m.title"
+In which movies did tom Hanks act in?;"FOR p IN persons FILTER p.name == ""Tom Hanks""
+  FOR m IN 1..1 OUTBOUND p acted_in
+    RETURN m.title"
+"List the movies with a title starting with ""The""";"FOR m IN movies FILTER STARTS_WITH(m.title, ""The"") SORT m.title RETURN m.title"
+How many movies did Tom Hanks appear in?;"FOR p IN persons FILTER p.name == ""Tom Hanks""
+  RETURN { movies: LENGTH(FOR m IN 1..1 OUTBOUND p acted_in RETURN 1) }"
+Who played in The Matrix?;"FOR m IN movies FILTER m.title == ""The Matrix""
+  FOR p IN 1..1 INBOUND m acted_in
+    RETURN p.name"
+Which movie has the most Oscars?;RETURN "This information is missing"
+Who directed the most movies?;"LET counts = (
+  FOR e IN directed
+    COLLECT director = e._from WITH COUNT INTO movie_count
+    RETURN { director, movie_count }
+)
+LET top = MAX(counts[*].movie_count)
+FOR c IN counts
+  FILTER c.movie_count == top
+  SORT c.director
+  RETURN { name: DOCUMENT(c.director).name, movie_count: c.movie_count }"

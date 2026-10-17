@@ -1,0 +1,39 @@
+SOFTWARE LICENSE AGREEMENT
+(fictional sample for the chapter 6 examples - not a real contract)
+
+This Software License Agreement (the "Agreement") is entered into as of March 1, 2025
+(the "Effective Date") by and between Northwind Analytics, Inc., a Delaware corporation
+with offices at 500 Congress Avenue, Austin, Texas, United States ("Licensor"), and
+Acme Data Ltd., a company registered in England with offices at 12 Wellington Street,
+Leeds, United Kingdom ("Licensee").
+
+1. DEFINITIONS
+"Software" means Licensor's GraphLens analytics platform, including updates provided
+under this Agreement. "Users" means employees of Licensee authorized to use the Software.
+
+2. LICENSE GRANT
+Licensor grants Licensee a non-exclusive, non-transferable license to use the Software
+for Licensee's internal business purposes for up to 50 Users. Licensee may not sublicense,
+resell or reverse engineer the Software.
+
+3. FEES AND PAYMENT TERMS
+Licensee shall pay a total license fee of USD 120,000, invoiced in two equal annual
+installments of USD 60,000. Invoices are payable within thirty (30) days of receipt.
+Late payments bear interest at 1% per month.
+
+4. SUPPORT AND HOSTING
+Licensor will host the Software, maintain 99.5% monthly availability, and provide email
+support on business days. Licensor will keep daily backups for thirty days.
+
+5. TERM AND TERMINATION
+This Agreement starts on the Effective Date and continues for two (2) years, ending on
+February 28, 2027, unless renewed. It renews automatically for successive one-year periods
+unless either party gives sixty (60) days' written notice before the end of the term.
+Either party may terminate for material breach not cured within thirty (30) days of notice.
+
+6. CONFIDENTIALITY
+Each party shall keep the other party's confidential information secret and use it only
+to perform this Agreement, during the term and for three (3) years afterwards.
+
+7. GOVERNING LAW
+This Agreement is governed by the laws of the State of Texas, United States.

@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+code/results/
+tools/aql-lint/vendor/
+tools/aql-lint/build/
+.DS_Store
